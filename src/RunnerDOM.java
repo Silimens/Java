@@ -18,7 +18,7 @@ import java.util.List;
 
 public class RunnerDOM {
 
-    private static String getElem(Element elem, String elemName) { // достаем содержимое тега
+    private static String getElem(Element elem, String elemName) { 
         final int ELEM_IND = 0;
         return elem.getElementsByTagName(elemName)
                 .item(ELEM_IND).getTextContent();
@@ -42,20 +42,20 @@ public class RunnerDOM {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(new URL(Constants.URL).openStream());
             doc.getDocumentElement().normalize();
-            NodeList nList = doc.getElementsByTagName(Constants.ITEM_ELEM); //лист элементов item
+            NodeList nList = doc.getElementsByTagName(Constants.ITEM_ELEM); 
 
             for (int i = 0; i < nList.getLength(); i++) {
                 Node nNode = nList.item(i);
 
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element eElement = (Element) nNode; // берем конкретную node и каждую перебираем
+                    Element eElement = (Element) nNode; 
                     title = getElem(eElement, Constants.TITLE_ELEM);
                     link = getElem(eElement, Constants.LINK_ELEM);
                     description = getElem(eElement, Constants.DESCRIPTION_ELEM);
                     atomName = getElem(eElement, Constants.ATOM_NAME_ELEM_DOM);
                     atomUri = getElem(eElement, Constants.ATOM_URI_ELEM_DOM);
                     category = getElem(eElement, Constants.CATEGORY_ELEM);
-                    enclosure = eElement.getAttribute(Constants.ENCLOSURE_ELEM); // Берем атрибут тега
+                    enclosure = eElement.getAttribute(Constants.ENCLOSURE_ELEM); 
                     guid = getElem(eElement, Constants.GUID_ELEM);
                     pubDate = getElem(eElement, Constants.PUB_DATE_ELEM);
                     articleList.add(new Article(title, link, description, atomName, atomUri, category, enclosure, guid, pubDate));
