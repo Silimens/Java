@@ -32,7 +32,7 @@ public class ThreadGenerator {
         }
     }
 
-    public int getResult() throws InterruptedException { // логика консолей
+    public int getResult() throws InterruptedException { 
         int result = operationType.ordinal() < 2 ? 0 : 1;
         for (ClaculatorThread thread : this.threads) {
             thread.join(); // метод ожидания
