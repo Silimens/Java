@@ -27,7 +27,7 @@ public class RunnerSTaX {
 
             while (reader.startElement(Constants.ITEM_ELEM, Constants.CHANNEL_ELEM)) {
 
-                if (reader.startElement(Constants.TITLE_ELEM, Constants.ITEM_ELEM)) { // внутри тега ITEM достаем содежримое тега TITLE
+                if (reader.startElement(Constants.TITLE_ELEM, Constants.ITEM_ELEM)) { 
                     title = reader.getText();
                 }
 
