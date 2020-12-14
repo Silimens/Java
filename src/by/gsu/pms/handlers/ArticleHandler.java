@@ -47,7 +47,7 @@ public class ArticleHandler extends DefaultHandler {
         if (inItem) {
             articleEnum = localName;
             if (articleEnum.equals(ArticleEnum.ENCLOSURE.toString())) {
-                enclosure = attributes.getValue(0); // если натыкаемся на тег enclosure то берем атрибут под индексом 0
+                enclosure = attributes.getValue(0); 
             }
         }
     }
@@ -55,7 +55,7 @@ public class ArticleHandler extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         String str = new String(ch, start, length).trim();
-        if (inItem) { //проверяем чтобы были внутри ITEM, а не другого тега
+        if (inItem) { 
             if (articleEnum.equals(ArticleEnum.TITLE.toString())) {
                 if (!str.isEmpty()) {
                     title = str;
