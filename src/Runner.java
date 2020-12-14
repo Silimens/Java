@@ -7,13 +7,13 @@ public class Runner {
     public static void main(String[] args) throws InterruptedException {
 
 
-        Scanner scan = new Scanner(System.in); //Чтение с клавиатуры
+        Scanner scan = new Scanner(System.in); 
         System.out.println("Введите число потоков: ");
-        int countOfThreads = scan.nextInt(); //ожидаем число
+        int countOfThreads = scan.nextInt();
         System.out.println("Введите число А: ");
         int maxValue = scan.nextInt();
         System.out.println("Enter operation sign ('1 - сложение', '2 - вычитание', '3 - умножение");
-        String operationType = scan.next(); //ожидаем строку
+        String operationType = scan.next(); 
 
         OperationType op = OperationType.ADDITION;
 
