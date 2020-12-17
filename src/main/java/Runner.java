@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Runner {
     public static void main(String[] args) {
 
-        Connector.init("products", "root", "root"); //устанавливаем соединие с БД
+        Connector.init("products", "root", "root"); 
 
         try (Scanner sc = new Scanner(System.in);
              Connection connection = Connector.getConnection()) {
@@ -20,31 +20,31 @@ public class Runner {
             final String DELETE_PRODUCT_BY_VALUES_QUERY = "DELETE FROM `list` WHERE `specific_values` = ?";
 
             System.out.println("Введите группу продукции:");
-            String group = sc.nextLine(); //читаем строку с консоли
+            String group = sc.nextLine();
             Logic.getInfoWithOneParameter(connection, GET_PARAMS_QUERY, group);
 
             System.out.println("Введите перечень продукции, не содержащий заданного параметра:");
-            String missingProduct = sc.nextLine(); //читаем строку с консоли
+            String missingProduct = sc.nextLine(); 
             Logic.getInfoWithOneParameter(connection, GET_PRODUCTS_WITHOUT_GIVEN_PARAMETER_QUERY, missingProduct);
 
             System.out.println("Введите информацию о продукции для заданной группы:");
-            String groupNameForDescription = sc.nextLine(); //читаем строку с консоли
+            String groupNameForDescription = sc.nextLine(); 
             Logic.getInfoWithOneParameter(connection, GET_INFO_BY_GROUP_QUERY, groupNameForDescription);
 
             System.out.println("Введите название продукции:");
-            String productName = sc.nextLine(); //читаем строку с консоли
+            String productName = sc.nextLine();
             Logic.getFullInfo(connection, GET_FULL_PRODUCT_INFORMATION_QUERY, productName);
 
             System.out.println("Введите название продукции на удаление:");
-            String paramsForDeletingProduct = sc.nextLine(); //читаем строку с консоли
+            String paramsForDeletingProduct = sc.nextLine();
             Logic.deleteProduct(connection, DELETE_PRODUCT_BY_VALUES_QUERY, paramsForDeletingProduct);
 
             System.out.println("Введите название группы, из которой нужно выполнить перемещение:");
-            String fromGroup = sc.nextLine(); //читаем строку с консоли
+            String fromGroup = sc.nextLine();
             System.out.println("Введите название группы для перемещния:");
-            String groupName = sc.nextLine(); //читаем строку с консоли
+            String groupName = sc.nextLine();
             System.out.println("Введите название группы, в которую нужно выполнить перемещение:");
-            String toGroup = sc.nextLine(); //читаем строку с консоли
+            String toGroup = sc.nextLine(); 
             Logic.moveParameterGroup(connection, fromGroup, groupName, toGroup);
 
         } catch (SQLException e) {
