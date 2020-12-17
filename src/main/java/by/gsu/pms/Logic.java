@@ -48,14 +48,14 @@ public class Logic {
 
     public static void getInfoWithOneParameter(Connection connection, String query, String param) throws SQLException {
 
-        try (PreparedStatement ps = connection.prepareStatement(query)) { //для запроса на получение данных по заданному параметру
+        try (PreparedStatement ps = connection.prepareStatement(query)) { 
 
-            ps.setString(1, param); //подставляем названием группы в запрос
+            ps.setString(1, param); 
 
-            try (ResultSet rs = ps.executeQuery()) { //результат запроса
+            try (ResultSet rs = ps.executeQuery()) { 
                 if (rs.isBeforeFirst()) {
-                    while (rs.next()) { //пока есть что выводить
-                        System.out.println(rs.getString(1)); //достаем из столбика
+                    while (rs.next()) { 
+                        System.out.println(rs.getString(1)); 
                     }
                 } else {
                     System.out.println("Данные отсутсвуют");
@@ -71,7 +71,7 @@ public class Logic {
             ps.setString(1, param);
 
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.isBeforeFirst()) { //проверка на то, получили ли мы какие-либо данные
+                if (rs.isBeforeFirst()) { 
                     while (rs.next()) {
                         System.out.println("Product group: " + rs.getString(1));
                         System.out.println("Description: " + rs.getString(2));
@@ -90,9 +90,9 @@ public class Logic {
         try (PreparedStatement ps = connection.prepareStatement(query)) {
 
             ps.setString(1, param);
-            int result = ps.executeUpdate(); //result будет равен 1, если запрос отработал успешно
+            int result = ps.executeUpdate(); /
 
-            if (result > 0) { //а вот и проверочка, все ли прошло успешно
+            if (result > 0) { 
                 System.out.println("Данные о продукте успешно удалены");
             } else {
                 System.out.println("Заданная покупка не найдена");
@@ -105,7 +105,7 @@ public class Logic {
         final String DELETE_PARAMS_GROUP_QUERY = "DELETE FROM product_groups WHERE `name` = ? AND `params_group` = ?";
         final String INSERT_PARAMS_GROUP_QUERY = "INSERT INTO `product_groups`(`name`, `params_group`) VALUES (?, ?)";
 
-        PreparedStatement ps = null; //здесь я вынес ps перед try-catch для того, чтобы использовать его дважды
+        PreparedStatement ps = null;
 
         try {
             ps = connection.prepareStatement(DELETE_PARAMS_GROUP_QUERY);
